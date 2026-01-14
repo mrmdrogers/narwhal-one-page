@@ -14,11 +14,13 @@ The page is intentionally minimal: plain HTML, CSS, and static images
 ## Project Structure
 
     .
-    ├── index.html        # Main landing page
-    ├── styles.css        # Page styles
-    ├── hero.png          # Cut-out hero portrait (transparent background)
-    ├── badge.png         # Campaign badge / logo
-    ├── favicon.png       # Site favicon
+    ├── index.html            # Main landing page
+    ├── styles.css            # Page styles
+    ├── favicon.ico           # Site favicon (recommended over .png)
+    ├── apple-touch-icon.png  # Apple Touch icon
+    ├── images/
+    │   ├── hero.png          # Cut-out hero portrait (transparent background)
+    │   └── badge.png         # Campaign badge / logo
     └── README.md
 
 ------------------------------------------------------------------------

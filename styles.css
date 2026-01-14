@@ -3,21 +3,11 @@
     --bg-hero: #f0d21a;
     --indigo: #4b4aa6;
 
-    /* ✅ ARTBOX CONTROLS (edit these) */
-    --art-x: 79%;
-    /* left position of box (percentage of frame width) */
-    --art-y: 10px;
-    /* top position of box */
-    --art-w: 520px;
-    /* box width */
-    --art-h: 680px;
-    /* box height (can extend under footer) */
+    --artbox-w: 520px;
+    --artbox-h: 560px;
     --art-scale: 1.08;
-    /* scale image inside the box */
-    --art-ox: 60%;
-    /* image anchor inside box (x) */
-    --art-oy: 10%;
-    /* image anchor inside box (y) */
+    --art-ox: 00%;
+    --art-oy: 0%;
 }
 
 * {
@@ -50,32 +40,28 @@ body {
     overflow: hidden;
 }
 
-/* stage is the only area where yellow/blue/art live */
-.stage {
-    position: relative;
-    overflow: hidden;
-    /* ✅ clips artbox */
-    background: transparent;
-}
-
 /* HERO */
 .hero {
     background: var(--bg-hero);
     position: relative;
-    z-index: 1;
+    overflow: hidden;
+    min-height: max(var(--artbox-h), 520px);
+    /* keep at least artbox height */
 }
 
 .hero__content {
     width: min(1100px, 100%);
     margin: 0 auto;
     padding: 52px 28px 28px;
-
-    /* Reserve space so text doesn't collide with artbox */
-    padding-right: clamp(320px, 42vw, 720px);
+    padding-right: calc(var(--artbox-w) + 36px);
+    min-height: 520px;
+    display: flex;
+    flex-direction: column;
 }
 
 .hero__headline {
     margin: 0;
+    white-space: nowrap;
     color: var(--indigo);
     font-weight: 900;
     letter-spacing: 0.06em;
@@ -93,10 +79,11 @@ body {
 }
 
 .hero__actions {
-    margin-top: 22px;
+    margin-top: auto;
+    margin-bottom: auto;
     display: grid;
     gap: 14px;
-    width: min(360px, 100%);
+    max-width: 360px;
 }
 
 .btn {
@@ -125,10 +112,8 @@ body {
 /* FOOTER sits above the art layer */
 .footer {
     background: var(--indigo);
-    /* padding: 18px 0; */
+    padding: 18px 0;
     position: relative;
-    z-index: 3;
-    /* ✅ above artbox */
 }
 
 .footer__inner {
@@ -149,6 +134,7 @@ body {
 }
 
 .footer__text {
+    white-space: nowrap;
     text-align: right;
     color: var(--bg-hero);
     font-weight: 900;
@@ -157,53 +143,41 @@ body {
     font-size: clamp(22px, 3vw, 46px);
 }
 
-/* ✅ ARTBOX: the movable “window” */
 .artbox {
     position: absolute;
-    left: var(--art-x);
-    top: var(--art-y);
-    width: var(--art-w);
-    height: var(--art-h);
-
-    transform: translateX(-50%);
-    /* so --art-x acts like an anchor point */
-
-    z-index: 2;
-    /* ✅ between hero and footer */
+    right: 0;
+    bottom: 0;
+    /* anchors to bottom of hero */
+    width: var(--artbox-w);
+    height: var(--artbox-h);
+    /* full hero height */
     pointer-events: none;
     overflow: hidden;
-    /* ✅ image can be bigger but clipped to box */
-    border-radius: 0;
 }
 
 .artbox__img {
     width: 100%;
     height: 100%;
-    object-fit: contain;
-    /* keep full head if possible */
+    object-fit: cover;
+    object-position: var(--art-ox) var(--art-oy);
     transform: scale(var(--art-scale));
     transform-origin: var(--art-ox) var(--art-oy);
-
     display: block;
-    filter: drop-shadow(0 12px 26px rgba(0, 0, 0, 0.18));
+    /* filter: drop-shadow(0 12px 26px rgba(0, 0, 0, 0.18)); */
 }
 
 /* Mobile: simplify (stack) */
 @media (max-width: 860px) {
     .hero__content {
         padding-right: 28px;
-        padding-top: 32px;
     }
 
-    /* Put the artbox below content and above footer */
     .artbox {
         position: relative;
-        left: auto;
-        top: auto;
-        transform: none;
+        right: auto;
+        bottom: auto;
         width: 100%;
-        height: 360px;
-        z-index: 2;
+        height: 380px;
     }
 
     .footer__inner {

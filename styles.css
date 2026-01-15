@@ -53,8 +53,8 @@ body {
 
 .hero__content {
     width: min(1100px, 100%);
-    margin: 0 auto;
-    padding: 52px 28px 28px;
+    margin: 0;
+    padding: 28px;
     padding-right: calc(var(--artbox-w) + 36px);
     min-height: 520px;
     display: flex;
@@ -62,7 +62,7 @@ body {
 }
 
 .hero__headline {
-    margin: 0;
+    margin: 22px;
     white-space: nowrap;
     color: var(--indigo);
     font-weight: 900;
@@ -132,6 +132,13 @@ body {
     display: inline-flex;
     align-self: center;
     justify-self: start;
+}
+
+.footer__badges {
+    display: grid;
+    grid-template-columns: auto auto;
+    align-items: center;
+    gap: 18px;
 }
 
 .footer__badge {

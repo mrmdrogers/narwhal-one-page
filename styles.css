@@ -174,7 +174,7 @@ img {
     font-weight: 900;
     letter-spacing: -0.02em;
     text-transform: uppercase;
-    font-size: clamp(44px, 6.4vw, 92px);
+    font-size: clamp(40px, 9.5vw, 76px);
     line-height: 0.94;
 }
 
@@ -466,6 +466,13 @@ img {
 /* ============ RESPONSIVE ============ */
 #sign {
     scroll-margin-top: 80px;
+}
+
+/* Two-column hero: keep "GET ON THE" on one line in the narrower column */
+@media (min-width: 861px) {
+    .hero__headline {
+        font-size: clamp(40px, 4.4vw, 58px);
+    }
 }
 
 @media (max-width: 860px) {

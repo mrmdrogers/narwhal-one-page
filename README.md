@@ -19,8 +19,13 @@ The page is intentionally minimal: plain HTML, CSS, and static images
     ├── favicon.ico           # Site favicon (recommended over .png)
     ├── apple-touch-icon.png  # Apple Touch icon
     ├── images/
-    │   ├── hero.png          # Cut-out hero portrait (transparent background)
-    │   └── badge.png         # Campaign badge / logo
+    │   ├── hero.png          # Ken Miyagishima portrait (transparent cut-out)
+    │   ├── jc-lopez.png      # J.C. Lopez portrait (transparent cut-out)
+    │   ├── badge.png         # KEN campaign badge / logo
+    │   ├── zia_badge.png     # New Mexico Zia badge
+    │   └── video-poster.jpg  # Poster frame shown before the video plays
+    ├── videos/
+    │   └── landing-video.mp4 # Web-optimized campaign video (H.264, faststart)
     └── README.md
 
 ------------------------------------------------------------------------
@@ -67,16 +72,46 @@ Every push to `main` triggers a new deployment.
 
 ## Assets & Design Notes
 
--   The hero portrait is positioned via CSS using a movable `artbox`
-    container.
--   The image is clipped by the `.frame` container to respect rounded
-    corners.
--   The portrait may intentionally overlap under the footer band for
-    visual depth.
--   All layout behavior is controlled via CSS custom properties for easy
-    tuning.
+The palette is indigo-forward on a light base; yellow is used only as a
+deliberate accent (the headline marker, the accent shape behind the video,
+the petition buttons, link underlines). Headlines use the **Archivo**
+display typeface (loaded from Google Fonts); body text falls back to the
+system sans. The layout uses **rounded, overlapping panels** rather than
+flat stacked bands, so the sections interlock (soft seams + layering)
+instead of reading as boxes.
 
-No client-side JavaScript is used.
+1.  **Sticky nav (frosted white)** — the KEN brand lockup (badge mark +
+    "Ken / for New Mexico"), the ticket wordmark, and an always-visible
+    "Sign the petition" pill that jumps to the CTA (`#sign`).
+2.  **Hero (asymmetric)** — headline on the left, the campaign video on
+    the right (over a tilted yellow accent shape). The video is
+    click-to-play so Ken's spoken message and audio are preserved;
+    `images/video-poster.jpg` (the campaign splash end-card) is shown
+    until it plays, and the player dips down over the ticket panel below.
+    `videos/landing-video.mp4` is a web-optimized H.264 encode (the large
+    camera-original source is git-ignored). To refresh it, re-encode with
+    faststart, e.g.
+    `ffmpeg -i SOURCE -c:v libx264 -crf 24 -movflags +faststart -c:a aac -b:a 128k videos/landing-video.mp4`.
+3.  **Ticket (light panel)** — both candidates as transparent cut-out
+    portraits in rounded, hover-lift cards (editorially staggered): Ken
+    Miyagishima (`images/hero.png`) for Governor and J.C. Lopez
+    (`images/jc-lopez.png`) for Lt. Governor.
+4.  **Call to action (indigo panel)** — placed *after* the ticket. New
+    Mexico requires separate signatures per candidate, so there are two
+    petition buttons linking to each candidate's own SOS petition URL.
+5.  **Footer (deep indigo)** — the Zia identity mark, the ticket
+    wordmark, and the legally required "Paid for by…" disclaimer.
+
+-   Copy is written in the first person ("we / us / our"), as the ticket
+    addressing the voter.
+-   Spacing, color, max-width, and panel rounding are driven by CSS
+    custom properties and `clamp()` at the top of `styles.css`.
+-   Responsive: the hero stacks under 860px; the ticket goes
+    single-column and buttons full-width under 640px. Hover lifts and
+    smooth scrolling respect `prefers-reduced-motion`.
+
+No client-side JavaScript is used. The only external dependency is the
+Google Fonts stylesheet for Archivo.
 
 ------------------------------------------------------------------------
 
@@ -94,10 +129,15 @@ Browsers load it automatically via:
 
 ## Editing Content
 
-To change: - **Text:** edit `index.html` - **Colors / layout:** edit
-`styles.css` - **Links:** update the `<a href>` targets in
-`index.html` - **Hero image positioning:** adjust CSS variables at the
-top of `styles.css`
+To change: - **Text / candidate names:** edit `index.html` - **Colors,
+spacing, max-width:** edit the CSS custom properties at the top of
+`styles.css` - **Petition links:** update the two `Sign for ...` button
+`<a href>` targets in the CTA section of `index.html` (J.C. Lopez's
+is marked with a `TODO` comment until his own petition URL is known) -
+**Website link:** update the `.cta__website` and `.brand` targets -
+**Video:** replace `videos/landing-video.mp4` - **Candidate photos:**
+replace `images/hero.png` / `images/jc-lopez.png` (transparent cut-outs,
+framed 4:5 and top-aligned inside `.candidate__photo`)
 
 ------------------------------------------------------------------------
 

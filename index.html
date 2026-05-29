@@ -1,68 +1,138 @@
 <!doctype html>
 <html lang="en">
 
-<title>Ken for Governor</title>
-
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Landing</title>
+    <title>Ken for Governor</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800;900&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="styles.css" />
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon.ico">
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 </head>
 
 <body>
-    <main class="page">
-        <div class="frame">
 
-            <!-- HERO (yellow) -->
-            <section class="hero" aria-label="Landing hero">
-                <div class="hero__content">
-                    <h1 class="hero__headline">
-                        <span>HELP ME</span>
-                        <span>GET ON THE</span>
-                        <span class="hero__headline--em">BALLOT!</span>
-                    </h1>
-
-                    <div class="hero__actions">
-                        <a class="btn btn--primary"
-                            href="https://www.electronicpetitions.elections.sos.nm.gov/voter-verification"
-                            target="_blank" rel="noopener noreferrer">
-                            Sign the Petition
-                        </a>
-                        <a class="btn btn--secondary" href="https://www.kenfornewmexico.com" target="_blank"
-                            rel="noopener noreferrer">
-                            Visit my Website
-                        </a>
-                    </div>
-                </div>
-
-                <!-- ART LAYER: movable box -->
-                <div class="artbox" aria-hidden="true">
-                    <img class="artbox__img" src="images/hero.png" alt="Ken for Governor" />
-                </div>
-            </section>
-
-            <!-- FOOTER (blue) sits above art layer -->
-            <footer class="footer" aria-label="Footer">
-                <div class="footer__inner">
-                    <div class="footer__badges">
-                        <a href="https://www.kenfornewmexico.com" target="_blank" rel="noopener noreferrer">
-                            <img class="footer__badge" src="images/badge.png" alt="Ken for Governor"
-                                aria-hidden="true" />
-                        </a>
-                        <a href="https://www.kenfornewmexico.com" target="_blank" rel="noopener noreferrer">
-                            <img class="footer__badge" src="images/zia_badge.png" alt="Ken for New Mexico"
-                                aria-hidden="true" />
-                        </a>
-                    </div>
-                    <div class="footer__text">FOR GOVERNOR</div>
-                </div>
-            </footer>
-
+    <!-- STICKY NAV -->
+    <header class="nav" aria-label="Site header">
+        <div class="nav__inner">
+            <a class="brand" href="https://www.kenfornewmexico.com" target="_blank" rel="noopener noreferrer">
+                <img class="brand__mark" src="images/badge.png" alt="" aria-hidden="true" />
+                <span class="brand__text">
+                    <span class="brand__name">Ken</span>
+                    <span class="brand__tag">for New Mexico</span>
+                </span>
+            </a>
+            <div class="nav__right">
+                <span class="nav__wordmark">Governor &amp; Lt. Governor</span>
+                <a class="nav__cta" href="#sign">Sign the petitions</a>
+            </div>
         </div>
+    </header>
+
+    <main>
+        <!-- HERO — asymmetric: copy left, video right -->
+        <section class="hero" aria-label="Landing hero">
+            <div class="hero__inner">
+                <div class="hero__copy">
+                    <h1 class="hero__headline">
+                        <span>Help us</span>
+                        <span>get on the</span>
+                        <span class="mark">Ballot</span>
+                    </h1>
+                    <p class="hero__sub">
+                        Two names. One ticket. We need your signature to get us on the ballot
+                        for New Mexico.
+                    </p>
+                    <a class="hero__cue" href="#sign">Watch our message, then add your name &darr;</a>
+                </div>
+
+                <figure class="hero__media">
+                    <span class="hero__media-label">A Message from Ken</span>
+                    <video class="player" controls playsinline preload="metadata" poster="images/video-poster.jpg">
+                        <source src="videos/landing-video.mp4" type="video/mp4" />
+                        <a href="videos/landing-video.mp4">Watch the campaign video</a>
+                    </video>
+                </figure>
+            </div>
+        </section>
+
+        <!-- TICKET — rounded panel rising over the hero -->
+        <section class="ticket panel" aria-labelledby="ticket-heading">
+            <div class="panel__inner">
+                <p class="eyebrow">The ticket</p>
+                <h2 class="section-heading" id="ticket-heading">Two New Mexicans, one mission</h2>
+
+                <div class="ticket__grid">
+                    <figure class="candidate">
+                        <div class="candidate__photo">
+                            <img src="images/hero.png" alt="Ken" />
+                        </div>
+                        <figcaption class="candidate__caption">
+                            <span class="candidate__name">Ken</span>
+                            <span class="candidate__role">for Governor</span>
+                        </figcaption>
+                    </figure>
+
+                    <figure class="candidate">
+                        <div class="candidate__photo">
+                            <img src="images/jc-lopez.png" alt="J.C. Lopez" />
+                        </div>
+                        <figcaption class="candidate__caption">
+                            <span class="candidate__name">J.C. Lopez</span>
+                            <span class="candidate__role">for Lt. Governor</span>
+                        </figcaption>
+                    </figure>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA — indigo panel rising over the ticket -->
+        <section class="cta panel" id="sign" aria-labelledby="cta-heading">
+            <div class="panel__inner cta__inner">
+                <p class="eyebrow eyebrow--invert">Add your name</p>
+                <h2 class="section-heading section-heading--invert" id="cta-heading">Put Us on the Ballot</h2>
+                <p class="cta__sub">In New Mexico, we each need our own signatures &mdash; please sign for both of us.</p>
+
+                <div class="cta__actions">
+                    <a class="btn btn--primary"
+                        href="https://www.electronicpetitions.elections.sos.nm.gov/voter-verification"
+                        target="_blank" rel="noopener noreferrer">
+                        Sign for Ken
+                        <span class="btn__sub">Governor</span>
+                    </a>
+                    <a class="btn btn--primary"
+                        href="https://www.electronicpetitions.elections.sos.nm.gov/jose-lopez" target="_blank"
+                        rel="noopener noreferrer">
+                        Sign for J.C. Lopez
+                        <span class="btn__sub">Lt. Governor</span>
+                    </a>
+                </div>
+
+                <a class="cta__website" href="https://www.kenfornewmexico.com" target="_blank"
+                    rel="noopener noreferrer">
+                    Visit the campaign website &rarr;
+                </a>
+            </div>
+        </section>
     </main>
+
+    <!-- FOOTER -->
+    <footer class="footer" aria-label="Footer">
+        <div class="footer__inner">
+            <a class="footer__zia" href="https://www.kenfornewmexico.com" target="_blank" rel="noopener noreferrer">
+                <img src="images/zia_badge.png" alt="Ken for New Mexico" />
+            </a>
+            <p class="footer__text">Ken for New Mexico &middot; Governor &amp; Lt. Governor</p>
+        </div>
+        <p class="footer__disclaimer">
+            Paid for by the Ken Gallegos Miyagishima for Governor Cmte. LLC. &mdash; Lester M. Frank CPA, Treasurer
+        </p>
+    </footer>
+
 </body>
 
 </html>

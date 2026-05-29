@@ -2,3 +2,12 @@
 Thumbs.db
 *.psd
 *.xcf
+.venv/
+serve.py
+.claude/
+images/*-raw.*
+# Source candidate photos/isolations — only the cut-out images/jc-lopez.png is committed
+images/jc_lopez*
+
+# Large source videos — only the web-optimized videos/landing-video.mp4 is committed
+videos/May27*.mp4
